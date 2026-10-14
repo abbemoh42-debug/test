@@ -1,0 +1,141 @@
+import random
+hero_name = input("Vad heter karaktären?")
+run = True
+
+while(run):
+    while run:
+        try:
+            hero_age = int(input("Hur gammal är karaktären?"))
+            if 0 < hero_age <=120:
+                print("Din ålder är", hero_age)
+                break
+            else:
+                print("Du har en ovanlig ålder:")
+        except:
+            print("du måste använda heltal.")
+    print("det här är historian om", hero_name)
+    print("han var", hero_age, "år gammal.")
+    hero_age = hero_age +3
+    print("tre år senare var", hero_name, hero_age, "år gammal.")
+    abbe_run = True
+    while abbe_run:
+        try:
+            choice = input("Ska hjälten öppna fönstret? ja/nej: ")
+            if choice == "ja":
+                abbe_run = False
+                print(hero_name, "hoppar in från fönstret försiktigt....")
+                break
+            elif choice == "nej":
+                abbe_run == False 
+                print(hero_name, "bestämmer sig att springa därifrån.")
+                break
+            else:
+                print("Svara på frågan. Säg ja eller nej.")
+        except:
+                print("Något gick fel.")
+    vilgot_run= True
+    while vilgot_run:
+        try:
+            gold = int(input("hur mycket gold har hjälten?"))
+            if gold >= 10:
+                print(hero_name,"har råd att köpa ett stav.")
+                vilgot_run == False
+                break
+            else:
+                print(hero_name,"har inte tillräckligt med pengar, gå och jobba din arbetslösa hjälte!")
+                vilgot_run
+                break
+        except:
+            print("skriv i heltal.")
+    if hero_age >= 18 and gold >= 10:
+        print(hero_name,"får köpa det magiska stavet.")
+    else:
+            print("stavhandlaren skakar på huvudet.")
+    Sewilius_run = True
+    while Sewilius_run:
+        try:
+            hero_strenght = int(input("hur stark är hjälten? (1-10):"))
+            if 1 >= hero_strenght >=10:
+                Sewilius_run = False
+                break
+            else:  
+                print("Du måste välja mellan 1-10.")
+                break
+        except:
+            print("något gick snett!")
+    hero_health = 10
+    troll_health = 7
+    troll_strenght = 10 
+    print ("på bron står ett stort troll.")
+    leo_run = True
+    while leo_run:
+        try:
+            choice = input("vill du bråka eller springa hem? (bråka/springa):")
+            if choice == "bråka":
+                print(hero_name, "dra sitt stav!")
+                if hero_strenght >= troll_strenght:
+                    troll_health = troll_health - hero_strenght
+                    print(hero_name, "träffar trollet!")
+                    print("trollet har", troll_health, "hälsa kvar.")
+                    if troll_health <= 0:
+                        print("Trollet är besegrad!")
+                        print("Sagan slutar här, och tack för din tid.")
+                        leo_run = False
+                        break
+                else:
+                    hero_health = hero_health - troll_health
+                    print("trollet är starkare och slår tillbaka starkare!")
+                    print(hero_name, "har", hero_health, "hälsa kvar!")
+
+                has_stav = input("har hjälten ett stav? (yep/nope)")
+                if hero_strenght >= troll_strenght and has_stav == "yep":
+                    print("trollet ser stavet och börjar vega ut.")
+                else:
+                    print("trollet skrattar och säger gå hem och träna mer")
+                    break
+                    (exit)
+            elif choice == "springa":
+                print(hero_name, "vänder om och spring hem.")
+                print("sagan är slut här, och tack för din tid!")
+                leo_run = False
+                break
+            else:
+                print("Svara med bråka eller springa.")
+        except:
+            print("Oj! något gick snett.")
+            leo_run = False
+
+    def trainHero(hero_strenght):
+        while(True):
+            
+            fight_reusult = random.randint(1,3)
+            trainer = "Aldulso the Great Swordmaster"
+            if fight_reusult == 1:
+                hero_strenght = hero_strenght + 1
+                print(hero_name,"Vann fighten och känner sig starkare. Styrka: ", hero_strenght)    
+            elif fight_reusult == 2:
+                hero_strenght = hero_strenght - 1
+                print(trainer, "won", hero_name, "är inte så bra som han troede, och behöver träna mer.", hero_strenght)
+            else:
+                print(hero_name, "är en äkta hjälte. Träningen avslutas.")
+                return hero_strenght
+
+    result = trainHero(hero_strenght)
+
+    print("Nu har hjälten", hero_strenght)
+
+    print("Hej då,tack för din tid")
+
+
+    answer = input("Du you want to train the hero (y/n)?")
+    if answer == "y":
+        print("hjälten tränar för att besegra trollet nästa gång")
+        trainHero()
+    else:
+        print("Hej då,bra jobbat ")
+
+    
+    run = input("Do you want to play again (True/False)?")
+    if run == False: 
+      print("Hej då,bra jobbat ")
+    break
